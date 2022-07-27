@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../public/bootsrap/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../public/css/games.css" type="text/css">
+    <title>The-Traditional-Games</title>
+    
+</head>
+<body>
+<section id="games" class="container-fluid">
+    <div class="wrapper-header">
+        <div class="header">
+           <a class="back" href="/"><</a><img class="logo" src="../public/assets/logo-1.png" alt=""><h2 class="title">ROCK PAPER SCISSORS</h2>
+        </div>
+    </div>
+    <div class="text-center"><a class="text-decoration-none" onclick="highScore()"><h3 class="title" style="cursor: pointer;">SCORE</h3></a></div>
+    <div class="game-session">
+        <div class="wrapper-player">
+            <h4 class="player">PLAYER 1</h4>
+            <div class="weapon">
+                <button class="bt-batu"><img class="batu" src="../public/../public/assets/batu.png" alt=""></button>
+                <button class="bt-kertas"><img class="kertas" src="../public/../public/assets/kertas.png" alt=""></button>
+                <button class="bt-gunting"><img class="gunting" src="../public/../public/assets/gunting.png" alt=""></button>
+            </div>
+        </div>
+        <div class="versus">
+            <!-- <h1 class="versus-text">VS</h1> -->
+            <div class="box-versus">
+                <h1 class="versus-text">VS</h1>
+                <!-- <h1 class="win">Winner</h1> -->
+            </div>
+            <button class="reset-btn" onclick="myFunction()"><img src="../public/assets/refresh.png" class="refrhes-btn-img" alt=""></button>
+        </div>
+        <div class="wrapper-com">
+            <h4 class="com">com</h4>
+            <div class="weapon-com">
+                <button class="batucom"><img class="cbatu" src="../public/assets/batu.png" alt=""></button>
+                <button class="kertascom"><img class="ckertas" src="../public/assets/kertas.png" alt=""></button>
+                <button class="guntingcom"><img class="cgunting" src="../public/assets/gunting.png" alt=""></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- javascript -->
+<script src="/public/js/games.js"></script>
+</body>
+</html>

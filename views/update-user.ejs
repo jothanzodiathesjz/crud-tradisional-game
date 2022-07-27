@@ -1,0 +1,59 @@
+<%- include('header') %>
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/super-user">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Edit User</li>
+        </ol>
+      </nav>
+    <form class="row g-3 needs-validation" method="post" action="/update-user/" novalidate>
+        
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="first_name">
+                <label for="floatingInput">First Name</label>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Last Name" name="last_name">
+                <label for="floatingInput">Last Name</label>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Full name" name="full_name">
+                <label for="floatingInput">Full Name</label>
+            </div>
+        </div>
+      
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="umur" name="umur">
+                <label for="floatingInput">age</label>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input type="date" class="form-control" id="floatingInput" placeholder="tgl lahir" name="tgl_lahir">
+                <label for="floatingInput">tanggal lahir</label>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Gender" name="gender">
+                <label for="floatingInput">gender</label>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="address" name="address">
+                <label for="floatingInput">address</label>
+            </div>
+        </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        
+      </form>
+</div>
+
+  <%- include('footer') %>

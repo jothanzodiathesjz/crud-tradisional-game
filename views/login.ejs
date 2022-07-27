@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/login.css">
+    <link rel="stylesheet" href="/public/bootsrap/bootstrap.css">
+    <title>Login-page</title>
+</head>
+<body>
+
+    <div id="login" class="d-flex align-items-center justify-content-center">
+        <div class="form-login">
+          <div class="card bg-dark text-white p-5" style="border-radius: 1rem;">
+            <div class="card-body text-center">
+              <h2 class="text-center">L O G I N</h2>
+              <p class="text-center">Masukkan username dan password</p>
+              <div class="mt-2">
+                <div class="form-group py-2">
+                  <label class="fw-bold" for="inputEmail">username*</label>
+                  <input type="text" name="username" class="form-control" id="username" placeholder="username" >
+                </div>
+                <div class="form-group py-2 mb-3">
+                  <label class="fw-bold" for="inputPassword">Password*</label>
+                  <input type="password"  class="form-control" id="password" placeholder="password" >
+                </div>
+                <button id="myButton" onclick="login()" type="button" class="btn btn-primary">login</button>
+                <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register" class="link-danger">Register</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- <div class="container-fluid" id="wrapper">
+        <div id="form-login" class="bg-dark rounded-3 row justify-content-center align-items-center">
+            <div class="form-group d-flex justify-content-center row">
+                <label for="inputEmail">Email</label>
+                <input type="text" class="form-control" id="username" placeholder="username" style="width:300px;">
+            </div>
+            <div class="form-group d-flex justify-content-center row">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" style="width:300px;">
+            </div>
+            <div class="form-group">
+                <label class="form-check-label"><input type="checkbox"> Remember me</label>
+            </div>
+            <button onclick="login()" type="button" class="btn btn-primary " style="width:300px;">Sign in</button>
+        </div>
+    </div> -->
+
+
+
+
+<script>
+let dataUser = JSON.parse(getCookie('user-data'))
+console.log(dataUser)
+                if(dataUser.username === ''){
+                    console.log("data user tdk ditemukan")
+                }else{
+                    window.location.href = '/'
+                }
+
+
+
+    function login(){
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+    
+        if(username === '' || password===''){
+            alert("anda belum menginput form")
+        }else{
+            fetch(
+                '/login',
+                {
+                    method: 'post',
+                    headers: {"content-type": "application/json"},
+                    body: JSON.stringify({ username: username, password: password})
+                }
+            ).then(function (response){
+                return  response.json()
+            }).then(function (result){
+                setCookie('user-data',JSON.stringify(result.result),1)
+                alert(result.message)
+                userData = JSON.stringify(result.resultData)
+                let dataUser = JSON.parse(getCookie('user-data'))
+                console.log(dataUser)
+                if(dataUser.username === ''){
+                    alert("data user tidak ditemukan")
+                }else if(dataUser.username === "admin"){
+                    window.location.href = '/super-user'
+                }else{
+                    window.location.href = '/'
+                }
+                console.log(result)
+            }).catch(function (error){
+                console.log(error)
+            })
+        }
+    }
+
+
+    
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+</script>
+</body>
+</html>
